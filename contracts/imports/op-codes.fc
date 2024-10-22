@@ -1,0 +1,27 @@
+int op::withdraw() asm "0x855511cc PUSHINT";
+int op::change_owner() asm "0x21746f75 PUSHINT";
+int op::change_jetton_wallet() asm "0x21746f77 PUSHINT";
+int op::change_budget() asm "0x21746f78 PUSHINT";
+int op::change_monitor() asm "0xa81f6ff3 PUSHINT";
+int op::claim_token_remain() asm "0x4b237977 PUSHINT";
+int op::claim_token_admin() asm "0x4b237978 PUSHINT";
+int op::claim_ton_monitor() asm "0x4b237979 PUSHINT";
+int op::claim_all_ton_monitor() asm "0x4b237971 PUSHINT";
+int op::add_aff_user() asm "0xab418819 PUSHINT";
+int op::jetton_transfer() asm "0xf8a7ea5 PUSHINT";
+int op::stop_campaign() asm "0x4aa61b24 PUSHINT";
+int op::pause_campaign() asm "0x578403ed PUSHINT";
+int op::restart_campaign() asm "0x1ef0720a PUSHINT";
+int op::add_reward_user() asm "0xfc889398 PUSHINT";
+int op::add_reward_airdrop() asm "0x4df6b26f PUSHINT";
+int op::buy_20_box() asm "0x4df6b22f PUSHINT";
+int op::buy_save_pearl() asm "0x4df6b21f PUSHINT";
+int op::buy_auto_merge() asm "0x4df6b11f PUSHINT";
+int op::buy_rock_lucky() asm "0x4df6b10f PUSHINT";
+int op::buy_box() asm "0x4df6b13f PUSHINT";
+
+int op::set_price_box() asm "0x4df6c10f PUSHINT";
+int op::set_price_save() asm "0x4df6c20f PUSHINT";
+int op::set_price_auto_merge() asm "0x4df6c30f PUSHINT";
+int op::set_price_lucky() asm "0x4df6c40f PUSHINT";
+int op::set_price_buy_box() asm "0x4df6b50f PUSHINT";

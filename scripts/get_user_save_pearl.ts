@@ -1,0 +1,44 @@
+import { Address, toNano } from '@ton/core';
+import { NetworkProvider, sleep } from '@ton/blueprint';
+import { BuyCardContract } from '../wrappers/BuyCardContract';
+
+export async function run(provider: NetworkProvider, args: string[]) {
+    const ui = provider.ui();
+
+    const address = Address.parse(args.length > 0 ? args[0] : await ui.input('user  address'));
+
+    if (!(await provider.isContractDeployed(address))) {
+        ui.write(`Error: Contract at address ${address} is not deployed!`);
+        return;
+    }
+    // const key = BigInt(args.length > 0 ? args[0] : await ui.input('key input'));
+        // console.log("(provider.sender().address as Address).toString()",(provider.sender().address as Address).toString())
+    const key = BigInt(hashStringToInt("0QDE0iKpkaZl5-ZpkluwHRNm9ffUnVN-EllkIm61zqoMX660"));
+    const affPool = provider.open(BuyCardContract.createFromAddress(address));
+
+    const userReward = await affPool.getBuySavePearl((key));
+    // console.log("(provider.sender().address as Address).toString()",(provider.sender().address as Address).toString())
+    // const hashInt = hashStringToInt((provider.sender().address as Address).toString());
+    console.log("userReward===",userReward)
+
+    ui.write('Waiting for affPool to userReward...');
+
+    // let counterAfter = await couter.getCounter();
+    // let attempt = 1;
+    // while (counterAfter === counterBefore) {
+    //     ui.setActionPrompt(`Attempt ${attempt}`);
+    //     await sleep(2000);
+    //     counterAfter = await couter.getCounter();
+    //     attempt++;
+    // }
+
+    ui.clearActionPrompt();
+    ui.write('userReward affPool successfully!');
+}
+function hashStringToInt(str: string) {
+    let hash = 5381;
+    for (let i = 0; i < str.length; i++) {
+        hash = (hash * 33) ^ str.charCodeAt(i);
+    }
+    return hash >>> 0; // Ensure the hash is a positive integer
+}
